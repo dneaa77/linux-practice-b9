@@ -1,0 +1,54 @@
+Variant A: OPS1 (demonstration)
+strategy | free | largest | external fragmentation | refusals
+alloc A 10: OK
+00-09:A | 10-63:FREE
+alloc B 15: OK
+00-09:A | 10-24:B | 25-63:FREE
+alloc C 10: OK
+00-09:A | 10-24:B | 25-34:C | 35-63:FREE
+alloc D 15: OK
+00-09:A | 10-24:B | 25-34:C | 35-49:D | 50-63:FREE
+alloc E 14: OK
+00-09:A | 10-24:B | 25-34:C | 35-49:D | 50-63:E
+free B : OK
+00-09:A | 10-24:FREE | 25-34:C | 35-49:D | 50-63:E
+free D : OK
+00-09:A | 10-24:FREE | 25-34:C | 35-49:FREE | 50-63:E
+alloc F 20: REFUSED
+00-09:A | 10-24:FREE | 25-34:C | 35-49:FREE | 50-63:E
+first   |   30 |      15 | 50.0% | 1
+alloc A 10: OK
+00-09:A | 10-63:FREE
+alloc B 15: OK
+00-09:A | 10-24:B | 25-63:FREE
+alloc C 10: OK
+00-09:A | 10-24:B | 25-34:C | 35-63:FREE
+alloc D 15: OK
+00-09:A | 10-24:B | 25-34:C | 35-49:D | 50-63:FREE
+alloc E 14: OK
+00-09:A | 10-24:B | 25-34:C | 35-49:D | 50-63:E
+free B : OK
+00-09:A | 10-24:FREE | 25-34:C | 35-49:D | 50-63:E
+free D : OK
+00-09:A | 10-24:FREE | 25-34:C | 35-49:FREE | 50-63:E
+alloc F 20: REFUSED
+00-09:A | 10-24:FREE | 25-34:C | 35-49:FREE | 50-63:E
+best    |   30 |      15 | 50.0% | 1
+alloc A 10: OK
+00-09:A | 10-63:FREE
+alloc B 15: OK
+00-09:A | 10-24:B | 25-63:FREE
+alloc C 10: OK
+00-09:A | 10-24:B | 25-34:C | 35-63:FREE
+alloc D 15: OK
+00-09:A | 10-24:B | 25-34:C | 35-49:D | 50-63:FREE
+alloc E 14: OK
+00-09:A | 10-24:B | 25-34:C | 35-49:D | 50-63:E
+free B : OK
+00-09:A | 10-24:FREE | 25-34:C | 35-49:D | 50-63:E
+free D : OK
+00-09:A | 10-24:FREE | 25-34:C | 35-49:FREE | 50-63:E
+alloc F 20: REFUSED
+00-09:A | 10-24:FREE | 25-34:C | 35-49:FREE | 50-63:E
+worst   |   30 |      15 | 50.0% | 1
+First Fit refuses F=20 although 30 units free: external fragmentation.

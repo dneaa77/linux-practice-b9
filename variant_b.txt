@@ -1,0 +1,31 @@
+OPS2 demo: no coalescing versus coalescing
+merge: False refusals: 1 map: 00-07:FREE | 08-15:FREE | 16-23:FREE | 24-31:FREE | 32-43:FREE | 44-63:FREE
+merge: True refusals: 0 map: 00-39:F | 40-63:FREE
+  split: [0,64) -> [0,32) + [32,64)
+  split: [0,32) -> [0,16) + [16,32)
+  split: [0,16) -> [0,8) + [8,16)
+buddy: alloc A OK
+buddy: alloc B OK
+  split: [16,32) -> [16,24) + [24,32)
+buddy: alloc C OK
+buddy: alloc D OK
+buddy: free B OK
+buddy: free C OK
+  split: [32,64) -> [32,48) + [48,64)
+buddy: alloc E OK
+  merge: [0,8) + [8,16)
+buddy: free A OK
+  merge: [24,32) + [16,24)
+  merge: [16,32) + [0,16)
+buddy: free D OK
+  merge: [32,48) + [48,64)
+  merge: [32,64) + [0,32)
+buddy: free E OK
+buddy: alloc F OK
+
+strategy | refusals | avg external | avg internal
+first   |        0 |         9.7% |         0.0%
+best    |        0 |         9.7% |         0.0%
+worst   |        0 |        16.5% |         0.0%
+buddy   |        0 |        26.6% |         8.3%
+Saved results/comparison.csv and results/comparison.png

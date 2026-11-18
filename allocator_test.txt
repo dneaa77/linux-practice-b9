@@ -1,0 +1,3 @@
+ERROR: invalid free
+realloc preserves data: hello
+leak detector: 40 bytes outstanding

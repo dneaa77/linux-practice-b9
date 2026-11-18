@@ -1,0 +1,10 @@
+allocator,strategy,scenario,time_ms,peak_rss_kb,external_fragmentation_pct
+custom,first,1,39.093,1012,0.00
+custom,best,1,37.112,1072,0.00
+glibc,system,1,0.259,1008,-1.00
+custom,first,2,34.636,1444,0.00
+custom,best,2,34.351,1444,0.00
+glibc,system,2,0.316,1124,-1.00
+custom,first,3,108.465,41224,0.00
+custom,best,3,107.299,41224,0.00
+glibc,system,3,16.699,39244,-1.00
